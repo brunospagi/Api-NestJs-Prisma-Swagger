@@ -3,12 +3,11 @@ import { CreateProdutoDto } from './dto/create-produto.dto';
 import { UpdateProdutoDto } from './dto/update-produto.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 
-
 @Injectable()
 export class ProdutoService {
   constructor(private prisma: PrismaService) {}
-  create( @Body() createProdutoDto: CreateProdutoDto) {
-    return this.prisma.produto.create({data : createProdutoDto})
+  create(@Body() createProdutoDto: CreateProdutoDto) {
+    return this.prisma.produto.create({ data: createProdutoDto });
   }
 
   findAll() {
@@ -16,7 +15,7 @@ export class ProdutoService {
   }
 
   findOne(id: number) {
-    return this.prisma.produto.findUnique({ where: {id} });
+    return this.prisma.produto.findUnique({ where: { id } });
   }
 
   update(id: number, updateProdutoDto: UpdateProdutoDto) {
