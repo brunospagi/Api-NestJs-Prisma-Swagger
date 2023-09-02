@@ -3,7 +3,6 @@ import { FuncionarioService } from './funcionario.service';
 import { FuncionarioController } from './funcionario.controller';
 import { PrismaModule } from 'src/prisma/prisma.module';
 
-
 @Module({
   controllers: [FuncionarioController],
   providers: [FuncionarioService],
