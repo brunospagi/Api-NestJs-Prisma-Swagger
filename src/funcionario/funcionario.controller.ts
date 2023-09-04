@@ -7,14 +7,18 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { FuncionarioService } from './funcionario.service';
 import { CreateFuncionarioDto } from './dto/create-funcionario.dto';
 import { UpdateFuncionarioDto } from './dto/update-funcionario.dto';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiSecurity, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('funcionario')
 @ApiTags('Funcionario')
+@ApiSecurity('api-key') // this is the name you set in Document builder
+@UseGuards(AuthGuard('api-key'))
 export class FuncionarioController {
   constructor(private readonly funcionarioService: FuncionarioService) {}
 
